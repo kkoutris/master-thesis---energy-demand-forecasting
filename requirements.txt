@@ -7,6 +7,6 @@ prophet
 scikit-learn
 scipy
 seaborn
-shap
+shap==0.48.0
 statsmodels
-torch
+xgboost==3.2.0  # pinned: _shap_tree_explainer base_score-JSON patch is version-specific (still required under 3.2.0)
