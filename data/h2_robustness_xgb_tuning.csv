@@ -1,0 +1,5 @@
+strategy,r2_baseline,r2_tuned,n_estimators,max_depth,learning_rate,min_child_weight,subsample,colsample_bytree,reg_lambda
+Filter,0.3692,0.4047,,,,,,,
+Ridge,0.3116,0.3784,,,,,,,
+Lasso,0.3665,0.4029,,,,,,,
+_best_params,,,300.0,4.0,0.05,1.0,0.6,0.8,5.0

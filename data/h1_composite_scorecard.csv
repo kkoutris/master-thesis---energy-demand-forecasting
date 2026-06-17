@@ -1,0 +1,4 @@
+comparison,cv_winner,signcons_winner,abscontrib_winner,grp_Behavioral,grp_Climate,grp_Economic,unanimous
+Filter vs Ridge,Ridge,Filter,Ridge,Ridge,Ridge,Ridge,False
+Ridge vs Lasso,Ridge,Ridge,Ridge,Ridge,Ridge,Ridge,True
+OLS-All vs Ridge,Ridge,OLS-All,Ridge,Ridge,Ridge,Ridge,False

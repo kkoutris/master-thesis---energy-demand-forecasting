@@ -1,0 +1,5 @@
+strategy,ffill,linear,delta_ffill_minus_linear
+Filter,1.11,1.159,-0.049
+Lasso,1.203,1.474,-0.271
+OLS-All,1.196,1.497,-0.301
+Ridge,0.707,0.655,0.052

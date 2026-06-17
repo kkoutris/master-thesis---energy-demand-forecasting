@@ -1,0 +1,13 @@
+universe,surrogate,pair,n_features,spearman_rho,rho_p,rho_holm_p,kendall_tau,tau_p,tau_holm_p,meets_085_rho,meets_085_tau,rho_ci30_lo,rho_ci30_hi,tau_ci30_lo,tau_ci30_hi,rho_ci7_lo,rho_ci7_hi
+ALL22,oos_baseline,Filter vs Ridge,22,0.9401,8.307348486990954e-11,0.0,0.7922,3.4958554955895468e-09,0.0,True,False,0.906,0.954,0.74,0.827,0.918,0.954
+ALL22,oos_baseline,Filter vs Lasso,22,0.9492,1.679827731881115e-11,0.0,0.8268,2.9641133712496993e-10,0.0,True,False,0.924,0.956,0.766,0.835,0.935,0.957
+ALL22,oos_baseline,Ridge vs Lasso,22,0.9797,1.9992469191538335e-15,0.0,0.8961,5.19477580014101e-13,0.0,True,True,0.967,0.989,0.879,0.939,0.968,0.988
+ALL22,oos_tuned,Filter vs Ridge,22,0.9548,5.296383985423819e-12,0.0,0.8268,2.9641133712496993e-10,0.0,True,False,,,,,,
+ALL22,oos_tuned,Filter vs Lasso,22,0.965,4.318827029042323e-13,0.0,0.8528,3.5640063923451547e-11,0.0,True,True,,,,,,
+ALL22,oos_tuned,Ridge vs Lasso,22,0.9842,1.6500961302732843e-16,0.0,0.9221,2.2707451489346332e-14,0.0,True,True,,,,,,
+CONT14,oos_baseline,Filter vs Ridge,14,0.8945,1.579830848680049e-05,0.0,0.7143,0.00014457073918879473,0.0001,True,False,0.855,0.943,0.648,0.78,0.877,0.93
+CONT14,oos_baseline,Filter vs Lasso,14,0.9209,2.981543161456545e-06,0.0,0.7582,3.947712157037554e-05,0.0001,True,False,0.894,0.938,0.714,0.78,0.899,0.938
+CONT14,oos_baseline,Ridge vs Lasso,14,0.978,1.5519632991187649e-09,0.0,0.9121,5.184777010173835e-08,0.0,True,True,0.956,0.991,0.868,0.956,0.965,0.991
+CONT14,oos_tuned,Filter vs Ridge,14,0.9385,6.86120148176667e-07,0.0,0.8022,8.816873896238976e-06,0.0,True,False,,,,,,
+CONT14,oos_tuned,Filter vs Lasso,14,0.9385,6.86120148176667e-07,0.0,0.8022,8.816873896238976e-06,0.0,True,False,,,,,,
+CONT14,oos_tuned,Ridge vs Lasso,14,0.9912,6.540154944134387e-12,0.0,0.956,2.385915084327783e-09,0.0,True,True,,,,,,

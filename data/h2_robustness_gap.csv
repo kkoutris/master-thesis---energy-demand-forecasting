@@ -1,0 +1,6 @@
+protocol,pct_filter,pct_ridge,gap_pp,ci_lo,ci_hi,r2_filter,r2_ridge
+oos_baseline_fourier,17.623,20.601,-2.977,-3.156,-2.806,0.369,0.312
+oos_baseline_no_fourier,17.943,24.642,-6.699,-6.931,-6.473,0.278,0.105
+oos_tuned_fourier,17.986,21.914,-3.927,-4.094,-3.767,0.4047,0.3784
+block_bootstrap_b7,17.623,20.601,-2.977,-3.297,-2.648,,
+block_bootstrap_b30,17.623,20.601,-2.977,-3.482,-2.446,,

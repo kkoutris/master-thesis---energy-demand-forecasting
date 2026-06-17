@@ -1,0 +1,3 @@
+comparison,n_features_default,n_features_zero_as_stable,wilcoxon_p_zero_as_stable,median_cv_diff_zero_as_stable,ci_lo,ci_hi
+Filter vs Lasso,16,16,0.9799,0.0082,-0.3375,0.2489
+Ridge vs Lasso,18,18,0.1415,-0.2256,-1.0132,0.1666

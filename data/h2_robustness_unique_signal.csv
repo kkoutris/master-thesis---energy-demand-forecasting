@@ -1,0 +1,3 @@
+feature,interaction_fraction,nearest_retained,partner_corr,shap_baseline,shap_partner_ablated,pct_change
+population,0.41,gdp_mln_eur,0.973,146.68,164.98,12.5
+sunshine_h,0.751,global_rad,0.867,31.49,52.87,67.9

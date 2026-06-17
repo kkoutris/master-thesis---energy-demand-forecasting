@@ -1,0 +1,7 @@
+protocol,pair,spearman_rho
+baseline,Filter vs Ridge,0.94
+baseline,Filter vs Lasso,0.949
+baseline,Ridge vs Lasso,0.98
+tuned,Filter vs Ridge,0.955
+tuned,Filter vs Lasso,0.965
+tuned,Ridge vs Lasso,0.984

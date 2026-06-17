@@ -1,0 +1,4 @@
+family,n_tests,raw_sig,holm_sig_per_family,holm_sig_pooled_47
+H1 pairs (5),5,0,0,0
+DM tests (42),42,2,0,0
+UNION (47),47,2,0,0

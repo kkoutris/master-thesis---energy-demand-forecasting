@@ -1,0 +1,10 @@
+scheme,comparison,n_features,wilcoxon_p,median_cv_diff,boot_ci_lo,boot_ci_hi,ci_excludes_0
+expanding,Filter vs Ridge,20,0.6742,0.1177,-0.2038,0.4266,False
+expanding,Ridge vs Lasso,18,0.1415,-0.2256,-1.094,0.1383,False
+expanding,OLS-All vs Ridge,22,0.2221,0.253,-0.1239,0.6176,False
+blocked,Filter vs Ridge,20,0.0074,0.5865,0.0061,1.7992,True
+blocked,Ridge vs Lasso,18,0.3692,-0.0884,-1.4562,0.3819,False
+blocked,OLS-All vs Ridge,22,0.2443,0.0961,-0.5161,1.7812,False
+fixed_roll,Filter vs Ridge,20,0.1536,0.0251,-0.0019,0.391,False
+fixed_roll,Ridge vs Lasso,18,0.6397,-0.0017,-0.1726,0.0653,False
+fixed_roll,OLS-All vs Ridge,22,0.2348,0.0187,-0.0135,0.2236,False

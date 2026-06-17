@@ -1,0 +1,9 @@
+universe,surrogate,set,n_strategies,kendall_W,perm_p
+ALL22,oos_baseline,3way_FRL,3,0.9709,0.0002
+ALL22,oos_baseline,4way_incl_OLS,4,0.9742,0.0002
+ALL22,oos_tuned,3way_FRL,3,0.9787,0.0002
+ALL22,oos_tuned,4way_incl_OLS,4,0.9805,0.0002
+CONT14,oos_baseline,3way_FRL,3,0.9541,0.0002
+CONT14,oos_baseline,4way_incl_OLS,4,0.9582,0.0002
+CONT14,oos_tuned,3way_FRL,3,0.9707,0.0002
+CONT14,oos_tuned,4way_incl_OLS,4,0.9747,0.0002

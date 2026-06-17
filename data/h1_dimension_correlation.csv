@@ -1,0 +1,5 @@
+strategy,n_features,spearman_cv_vs_signcons,spearman_cv_vs_abscontrib
+OLS-All,22,-0.734,0.42
+Filter,20,-0.827,0.296
+Ridge,22,-0.837,0.055
+Lasso,18,-0.862,0.521

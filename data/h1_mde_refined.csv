@@ -1,0 +1,6 @@
+pair,n_features,mde80_point,mde80_ci_lo,mde80_ci_hi,mde80_frac_unreached_in_boot,mde80_gaussian_model,observed_median_diff,sd_diff,blocked_observed_median_diff
+OLS-All vs Ridge,22,1.0464,0.2515,1.5198,0.0,0.4798,0.253,1.7324,0.0961
+OLS-All vs Filter,20,0.1547,0.05,0.6494,0.0,0.2448,-0.0083,1.3968,
+Filter vs Ridge,20,0.8944,0.2985,1.6723,0.0,0.2742,0.1177,1.3057,0.5865
+Filter vs Lasso,16,1.3756,0.1895,1.5666,0.013,0.211,0.0082,1.0758,
+Ridge vs Lasso,18,1.44,0.4613,1.8792,0.01,0.3155,-0.2256,1.7178,
