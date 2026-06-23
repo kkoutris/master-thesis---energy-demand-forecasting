@@ -99,8 +99,15 @@ def build_strategies():
     return out
 
 
-def abs_errors_per_origin(s):
-    """Replicates notebook-03 rolling_evaluate; returns {h: abs error array}."""
+def _forecast_errors(s):
+    """Rolling-origin forecast errors per horizon (notebook-03 protocol).
+
+    Returns (abs_err, pct_err) where abs_err[h] are per-origin absolute errors
+    (MW) and pct_err[h] are per-origin absolute percentage errors
+    (100*|y-yhat|/|y|). The per-origin mean of pct_err[h] equals the strategy's
+    MAPE at horizon h (notebook-03 `mape`), so a between-strategy mean
+    differential equals the MAPE difference in pp used by the TOST test.
+    """
     stage1, X, y_tr, y_te = s["stage1"], s["X"], s["y_tr"], s["y_te"]
     resid_tr = y_tr - stage1.predict(X["train"])
     sarima_r = SARIMAX(resid_tr, order=UNIVERSAL_ORDER,
@@ -110,7 +117,8 @@ def abs_errors_per_origin(s):
     exog_te = stage1.predict(X["test"])
     resid_te = y_te - exog_te
 
-    errs = {h: [] for h in HORIZONS}
+    abs_err = {h: [] for h in HORIZONS}
+    pct_err = {h: [] for h in HORIZONS}
     for origin in range(0, len(resid_te) - MAX_H, EVAL_STEP):
         res_ext = sarima_r if origin == 0 else sarima_r.append(
             endog=resid_te[:origin], refit=False)
@@ -119,8 +127,21 @@ def abs_errors_per_origin(s):
             t = origin + h
             if t >= len(resid_te):
                 continue
-            errs[h].append(abs(y_te[t] - (fc[h - 1] + exog_te[t])))
-    return {h: np.array(v) for h, v in errs.items()}
+            err = abs(y_te[t] - (fc[h - 1] + exog_te[t]))
+            abs_err[h].append(err)
+            pct_err[h].append(100.0 * err / abs(y_te[t]))
+    return ({h: np.array(v) for h, v in abs_err.items()},
+            {h: np.array(v) for h, v in pct_err.items()})
+
+
+def abs_errors_per_origin(s):
+    """Replicates notebook-03 rolling_evaluate; returns {h: abs error array}."""
+    return _forecast_errors(s)[0]
+
+
+def pct_errors_per_origin(s):
+    """Per-origin absolute percentage errors {h: array}; mean == MAPE (pp)."""
+    return _forecast_errors(s)[1]
 
 
 def dm_notebook(e1, e2, h):
@@ -135,12 +156,27 @@ def dm_notebook(e1, e2, h):
     return float(dm), float(p)
 
 
-def dm_corrected(e1, e2, h, step=EVAL_STEP):
-    """DM with Newey-West LRV over the origin-spaced d-series and the HLN
-    factor in origin units m = ceil(h/step)."""
-    d = e1 - e2
+def nw_hln_se(d, h, step=EVAL_STEP):
+    """Newey-West(Bartlett) + HLN standard error of a mean loss differential.
+
+    SHARED variance helper: the corrected DM test (`dm_corrected`, equivalent to
+    notebook-03 `dm_test_nw_hln`) AND the TOST equivalence test
+    (`tost_equivalence.py`) both call this, so the two tests use the *same*
+    long-run variance and degrees of freedom and are mutually consistent.
+    Origins are spaced `step` days apart, so the per-origin differential is
+    serially correlated only when h > step.
+
+    Returns (d_bar, se, df, m, L):
+      d_bar : mean of d
+      se    : sqrt(lrv / n) * hln  — Bartlett LRV (truncation L = m-1) with the
+              Harvey-Leybourne-Newbold small-sample factor, in origin units
+      df    : n - 1   (t-reference degrees of freedom)
+      m     : horizon in origin steps = ceil(h / step)
+      L     : NW Bartlett truncation lag = m - 1
+    """
+    d = np.asarray(d, dtype=float)
     n = len(d)
-    d_bar = d.mean()
+    d_bar = float(d.mean())
     m = int(np.ceil(h / step))          # horizon in origin steps
     L = m - 1                            # NW truncation (overlap depth)
     dc = d - d_bar
@@ -152,8 +188,17 @@ def dm_corrected(e1, e2, h, step=EVAL_STEP):
     if lrv <= 0:                         # kernel sum can go negative in
         lrv = gamma0                     # finite samples; floor at gamma0
     hln = np.sqrt(max((n + 1 - 2 * m + m * (m - 1) / n) / n, 1e-12))
-    dm = d_bar / (np.sqrt(lrv / n) * hln)
-    p = 2 * (1 - scipy_stats.t.cdf(abs(dm), df=n - 1))
+    se = np.sqrt(lrv / n) * hln
+    return d_bar, float(se), n - 1, m, L
+
+
+def dm_corrected(e1, e2, h, step=EVAL_STEP):
+    """DM with Newey-West LRV over the origin-spaced d-series and the HLN
+    factor in origin units m = ceil(h/step). Refactored onto the shared
+    `nw_hln_se` helper; output is numerically identical (dm = d_bar / se)."""
+    d_bar, se, df, m, L = nw_hln_se(e1 - e2, h, step)
+    dm = d_bar / se
+    p = 2 * (1 - scipy_stats.t.cdf(abs(dm), df=df))
     return float(dm), float(p), m, L
 
 

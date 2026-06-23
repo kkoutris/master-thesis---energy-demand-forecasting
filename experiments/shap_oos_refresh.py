@@ -353,7 +353,7 @@ def refresh_h2_bootstrap():
                 label=f"In-sample observed ({in_row['observed_gap_pp']:+.2f} pp)")
     ax.set_xlabel("Information-loss gap (pp): %|SHAP|_Filter − %|SHAP|_Ridge in filtered features")
     ax.set_ylabel("Bootstrap frequency")
-    ax.set_title("H2 bootstrap distribution — OOS surrogate (Filter vs Ridge)")
+    ax.set_title("H1 bootstrap distribution — OOS surrogate (Filter vs Ridge)")
     ax.legend(fontsize=8, loc="upper left")
     plt.tight_layout()
     out = ROOT / "plots" / "h2_bootstrap_oos_ci.png"

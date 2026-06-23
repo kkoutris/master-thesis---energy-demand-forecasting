@@ -21,6 +21,7 @@ so the imported module must be present but need not be run first:
 | Script | imports |
 |---|---|
 | `dm_loss_and_mtc_sensitivity.py` | `dm_correction` |
+| `tost_equivalence.py` | `dm_correction` (+ `realistic_forecast` with `--realistic`) |
 | `h1_power_mde_refinement.py` | `coef_stability_robustness` |
 | `h3_rank_consistency_robustness.py` | `h2_surrogate_robustness` |
 
@@ -33,8 +34,9 @@ workaround in `fourier_ablation.py` (xgboost pinned to `3.2.0`) — reuse it for
 
 | Script | Thesis | Key outputs |
 |---|---|---|
-| `dm_correction.py` | §H1, Fig. (DM grid) | `data/sarimax_dm_corrected.csv`, `plots/dm_holm_grid_corrected.png` — corrected DM (Newey–West LRV + HLN, origin units) |
+| `dm_correction.py` | §H1, Fig. (DM grid) | `data/sarimax_dm_corrected.csv`, `plots/dm_holm_grid_corrected.png` — corrected DM (Newey–West LRV + HLN, origin units). Exposes `nw_hln_se` (shared variance helper) and `pct_errors_per_origin` (MAPE-scale per-origin errors) reused by `tost_equivalence.py` |
 | `dm_loss_and_mtc_sensitivity.py` | §H1 | `data/dm_loss_mtc_sensitivity.csv` — squared vs abs loss, Holm/Hochberg/BH, block-bootstrap |
+| `tost_equivalence.py` | §H1 (non-inferiority) | `data/tost_equivalence_oracle.csv` (+ `data/tost_equivalence_realistic.csv` with `--realistic`) — TOST equivalence test on per-horizon MAPE diff (δ=0.5 pp), reusing the DM `nw_hln_se` variance + df |
 | `xgb_surrogate_cv.py` | §3.5 / §H1 info analysis | `data/xgb_surrogate_r2.csv`, `data/xgb_surrogate_shap.csv`, `plots/xgb_surrogate_{r2,shap_compare}.png` — in-sample vs train→test vs CV surrogate |
 | `shap_oos_refresh.py` | Fig. 2, App. F (OOS) | `data/fourier_ablation_shap_oos.csv`, `data/interpretability_h2_bootstrap_oos.csv`, `plots/fourier_ablation_shap_oos.png`, `plots/h2_bootstrap_oos_ci.{png,pdf}` |
 | `statistical_depth.py` | §3.5 effect sizes | `data/h1_effect_sizes.csv` **[current]**; DM/power outputs **[superseded]** by `dm_correction.py` and `h1_power_mde_refinement.py` (see script header) |
