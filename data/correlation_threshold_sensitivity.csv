@@ -1,6 +1,6 @@
 threshold,n_retained_continuous,n_removed,removed_features,retained_features,selected
-0.7,10,4,"humidity_pct, gdp_mln_eur, population, sunshine_h","temp_c, wind_ms, precip_mm, global_rad, pressure_hpa, cloudiness, nao, price_eur_kwh, wind_energy_gwh, solar_energy_gwh",False
-0.75,11,3,"gdp_mln_eur, population, sunshine_h","temp_c, wind_ms, precip_mm, global_rad, pressure_hpa, humidity_pct, cloudiness, nao, price_eur_kwh, wind_energy_gwh, solar_energy_gwh",False
-0.8,12,2,"population, sunshine_h","temp_c, wind_ms, precip_mm, global_rad, pressure_hpa, humidity_pct, cloudiness, nao, price_eur_kwh, gdp_mln_eur, wind_energy_gwh, solar_energy_gwh",True
-0.85,12,2,"population, sunshine_h","temp_c, wind_ms, precip_mm, global_rad, pressure_hpa, humidity_pct, cloudiness, nao, price_eur_kwh, gdp_mln_eur, wind_energy_gwh, solar_energy_gwh",False
+0.7,10,4,"sunshine_h, humidity_pct, gdp_mln_eur, population","temp_c, wind_ms, precip_mm, global_rad, pressure_hpa, cloudiness, nao, price_eur_kwh, wind_energy_gwh, solar_energy_gwh",False
+0.75,11,3,"sunshine_h, gdp_mln_eur, population","temp_c, wind_ms, precip_mm, global_rad, pressure_hpa, humidity_pct, cloudiness, nao, price_eur_kwh, wind_energy_gwh, solar_energy_gwh",False
+0.8,12,2,"sunshine_h, population","temp_c, wind_ms, precip_mm, global_rad, pressure_hpa, humidity_pct, cloudiness, nao, price_eur_kwh, gdp_mln_eur, wind_energy_gwh, solar_energy_gwh",True
+0.85,12,2,"sunshine_h, population","temp_c, wind_ms, precip_mm, global_rad, pressure_hpa, humidity_pct, cloudiness, nao, price_eur_kwh, gdp_mln_eur, wind_energy_gwh, solar_energy_gwh",False
 0.9,13,1,population,"temp_c, wind_ms, precip_mm, sunshine_h, global_rad, pressure_hpa, humidity_pct, cloudiness, nao, price_eur_kwh, gdp_mln_eur, wind_energy_gwh, solar_energy_gwh",False

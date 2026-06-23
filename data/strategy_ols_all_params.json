@@ -25,6 +25,6 @@
   ],
   "n_features": 22,
   "regularisation": "None",
-  "note": "OLS on all 18 features; uses same feature matrices as Strategy 3 (Ridge)",
+  "note": "OLS on all 22 features; uses same feature matrices as Strategy 3 (Ridge)",
   "label": "OLS-All (Unregularised)"
 }

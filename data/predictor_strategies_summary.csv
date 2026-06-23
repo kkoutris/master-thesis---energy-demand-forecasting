@@ -1,6 +1,6 @@
 Strategy,n_features,Retained continuous,Removed / zeroed,Hyperparameters,CV RMSE,Role
 0 — OLS-All (Unregularised),22,All 14 (no regularisation),None,None,—,Multicollinearity problem baseline
-1 — Correlation Filter,20,"temp_c, wind_ms, precip_mm, global_rad, pressure_hpa, humidity_pct, cloudiness, nao, price_eur_kwh, gdp_mln_eur, wind_energy_gwh, solar_energy_gwh","population, sunshine_h",|r| threshold = 0.8,—,Interpretable baseline
+1 — Correlation Filter,20,"temp_c, wind_ms, precip_mm, global_rad, pressure_hpa, humidity_pct, cloudiness, nao, price_eur_kwh, gdp_mln_eur, wind_energy_gwh, solar_energy_gwh","sunshine_h, population",|r| threshold = 0.8,—,Interpretable baseline
 2 — PCA,17,9 components (≥95% variance),5 dimensions reduced,n_components = 9,—,Accuracy upper bound (no interpretability)
 3 — Ridge (L2),22,All 14 (shrunk),None,λ = 10.0,0.5384,Full-retention regularised (primary candidate)
 4 — Lasso (l1_ratio=1.0) [from EN grid],18,"temp_c, precip_mm, sunshine_h, global_rad, pressure_hpa, nao, gdp_mln_eur, population, wind_energy_gwh, solar_energy_gwh","humidity_pct, cloudiness, price_eur_kwh, wind_ms, sin1_ann, sin2_ann","α=1.0, λ=0.01",0.5280,Sparse regularised (primary candidate)
