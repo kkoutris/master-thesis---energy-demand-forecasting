@@ -1,12 +1,18 @@
-ipywidgets
-matplotlib
-numpy
-openpyxl
-pandas
-prophet
-scikit-learn
-scipy
-seaborn
+# Thesis pipeline — pinned to the versions the results were produced with
+# (conda env `machine_learning`, Python 3.10.18). Pin exactly to reproduce the
+# reported numbers; statsmodels/scikit-learn/numpy in particular affect the
+# SARIMAX fits, coefficients, and p-values.
+
+ipywidgets==8.1.5
+matplotlib==3.10.0
+numpy==1.26.4
+openpyxl==3.1.5
+pandas==2.3.1
+pillow==11.3.0          # required by experiments/regen_thesis_figures.py (from PIL import Image)
+prophet==1.3.0          # EDA.ipynb only
+scikit-learn==1.7.1
+scipy==1.15.3
+seaborn==0.13.2
 shap==0.48.0
-statsmodels
-xgboost==3.2.0  # pinned: _shap_tree_explainer base_score-JSON patch is version-specific (still required under 3.2.0)
+statsmodels==0.14.6
+xgboost==3.2.0          # pinned: _shap_tree_explainer base_score-JSON patch is version-specific (still required under 3.2.0)
